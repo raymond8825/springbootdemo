@@ -29,5 +29,26 @@ class DemoMybatisplusApplicationTests {
             log.info(user.toString());
         }
     }
+    @Test
+    void insertTest() {
+        User user = new User();
+        user.setName("小明");
+        user.setAge(1);
+        user.setEmail("xh@163.com");
+
+        int insert = userMapper.insert(user); // 自动生成了id
+        System.out.println("insert = " + insert); // 受影响的行数
+        System.out.println("user = " + user);
+    }
+    @Test
+    void updateTest() {
+        User user = new User();
+        user.setId(5L);
+        user.setName("John");
+
+        // 传入一个对象进行更新
+        int i = userMapper.updateById(user);
+        System.out.println("i = " + i);
+    }
 
 }
